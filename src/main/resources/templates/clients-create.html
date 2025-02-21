@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Create client</title>
+</head>
+<body class="d-flex flex-column h-100">
+
+<main class="flex-shrink-0">
+  <section layout:fragment="body" class="py-5">
+    <div class="container">
+    <h2>Create new client</h2>
+    <form role="form" method="post" th:action="@{/clients/new}" th:object="${client}">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="firstName">First name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}" placeholder="First name" required>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="lastName">Last name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}" placeholder="Last name" required>
+        </div>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="middleName">Middle name</label>
+        <input type="text" class="form-control" id="middleName" name="middleName" th:field="*{middleName}" placeholder="Middle name">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="passportInfo">Passport info</label>
+        <input type="text" class="form-control" id="passportInfo" name="passportInfo" th:field="*{passportInfo}" placeholder="Passport info (10 symbols only numbers)" pattern="\d{10}" required>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="isMarried">Is married</label>
+        <select id="isMarried" class="form-control" th:field="*{isMarried}">
+          <option value="true" th:selected="*{isMarried == 'true'}">Yes</option>
+          <option value="false" th:selected="*{isMarried == 'false'}">No</option>
+        </select>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" name="address" th:field="*{address}" placeholder="Address" required>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="numberPhone">Phone number</label>
+        <input type="tel" class="form-control" id="numberPhone" name="numberPhone" th:field="*{numberPhone}" placeholder="Phone number (11 symbols only numbers)" pattern="\d{11}" required>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="workPeriod">Work period</label>
+        <input type="text" class="form-control" id="workPeriod" name="workPeriod" th:field="*{workPeriod}" placeholder="Work period">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="jobName">Job name</label>
+        <input type="text" class="form-control" id="jobName" name="jobName" th:field="*{jobName}" placeholder="Job name">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="companyName">Company name</label>
+        <input type="text" class="form-control" id="companyName" name="companyName" th:field="*{companyName}" placeholder="Company name">
+      </div>
+      <div class="form-group col-md-5">
+        <label for="amount">Amount what do you wanting</label>
+        <input type="number" class="form-control" id="amount" name="amount" th:field="*{amount}" placeholder="Amount" step="100" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Create client</button>
+    </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>

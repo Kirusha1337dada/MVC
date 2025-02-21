@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Clients list</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../static/css/styles.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment="body" class="py-5">
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="fw-bolder">Approved credits</h1>
+                <p class="lead fw-normal text-muted mb-0">List of all approved credits</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Credit status</th>
+                        <th>Days</th>
+                        <th>Approved amount</th>
+                        <th>Client Id</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="decisionCredit : ${decisionCredits}">
+                        <td th:text="${decisionCredit.id}"></td>
+                        <td th:text="${decisionCredit.creditStatus}"></td>
+                        <td th:text="${decisionCredit.days}"></td>
+                        <td th:text="${decisionCredit.approvedAmount}"></td>
+                        <td  th:text="${decisionCredit.client.id}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>

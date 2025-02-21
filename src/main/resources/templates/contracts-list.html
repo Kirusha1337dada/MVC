@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Clients list</title>
+    <link rel="icon" type="image/x-icon" href="../static/assets/favicon.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="../static/css/styles.css" rel="stylesheet" />
+</head>
+<body class="d-flex flex-column h-100">
+<main class="flex-shrink-0">
+    <section layout:fragment="body" class="py-5">
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="fw-bolder">Signed credits</h1>
+                <p class="lead fw-normal text-muted mb-0">List of all credits contract</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date sign</th>
+                        <th>Signing status</th>
+                        <th>Client ID</th>
+                        <th>First, middle and last name</th>
+                        <th>Passport info</th>
+                        <th>Address</th>
+                        <th>Phone number</th>
+                        <th>Work period</th>
+                        <th>Job name</th>
+                        <th>Company name</th>
+                        <th>Approved amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="contract : ${contractCredits}">
+                        <td th:text="${contract.id}"></td>
+                        <td th:text="${contract.dateSign}"></td>
+                        <td th:text="${contract.status}"></td>
+
+                        <td th:text="${contract.client == null ? '---' : contract.client.id}"></td>
+                        <td th:text="${contract.client == null ? '---' : (contract.client.firstName + ' ' + contract.client.middleName+ ' '+  contract.client.lastName)}"></td>
+                        <td th:text="${contract.client == null ? '---' : contract.client.passportInfo}"></td>
+                        <td th:text="${contract.client == null ? '---' : contract.client.address}"></td>
+                        <td th:text="${contract.client == null ? '---' : contract.client.numberPhone}"></td>
+                        <td th:text="${contract.client == null ? '---' : contract.client.workPeriod}"></td>
+                        <td th:text="${contract.client == null ? '---' : contract.client.jobName}"></td>
+                        <td th:text="${contract.client == null ? '---' : contract.client.companyName}"></td>
+                        <td th:text="${contract.decisionCredit == null ? '---' : contract.decisionCredit.approvedAmount}"></td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
